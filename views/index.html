@@ -1,0 +1,38 @@
+{{ block "index" .}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Groxy</title>
+        <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-purple.css">
+        <script src="/js/index.js"></script>
+    </head>
+    <body>
+        <div id="taskbar" class="w3-bar-block w3-card w3-theme-d2 context-menu" style="display:none">
+            <form id="send-to"        class="w3-bar-item w3-button w3-hover-theme option taskbar-option" onclick="chooseOption(event, 'send-to')">Send To</form> <!-- send-to -->
+            <form id="start-proxy"    class="w3-bar-item w3-button w3-hover-theme option taskbar-option" onclick="chooseOption(event, 'start-proxy')">Start Proxy</form> <!-- send-to -->
+            <form id="stop-proxy"     class="w3-bar-item w3-button w3-hover-theme option taskbar-option" onclick="chooseOption(event, 'stop-proxy')">Stop Proxy</form> <!-- send-to -->
+            <form id="add-to-target"  class="w3-bar-item w3-button w3-hover-theme option taskbar-option" onclick="chooseOption(event, 'add-to-target')">Add To Target</form> <!-- send-to -->
+        </div>
+        <div id="sidebar" class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-theme-d2" style="display:none">
+            <button class="w3-bar-item w3-button w3-hide-large w3-hover-theme option sidebar-option" onclick="w3_close()">Close &times;</button>
+            <a id="Dashboard" class="w3-bar-item w3-button w3-hover-theme option sidebar-option" hx-get="/dashboard" hx-target="#UI" onclick="chooseOption(event, 'Dashboard')">Dashboard</a> <!-- Dashboard -->
+            <a id="Target"    class="w3-bar-item w3-button w3-hover-theme option sidebar-option" hx-get="/tracker"   hx-target="#UI" onclick="chooseOption(event, 'Target')">Tracker</a> <!-- Target -->
+            <a id="MITM"      class="w3-bar-item w3-button w3-hover-theme option sidebar-option" hx-get="/mitm"      hx-target="#UI" onclick="chooseOption(event, 'MITM')">MITM</a> <!-- Proxy->Intercept -->
+            <a id="History"   class="w3-bar-item w3-button w3-hover-theme option sidebar-option" hx-get="/history"   hx-target="#UI" onclick="chooseOption(event, 'History')">History</a> <!-- Proxy->History -->
+            <a id="Fuzzer"    class="w3-bar-item w3-button w3-hover-theme option sidebar-option" hx-get="/fuzzer"    hx-target="#UI" onclick="chooseOption(event, 'Fuzzer')">Fuzzer</a> <!-- Intruder -->
+            <a id="Tinkerer"  class="w3-bar-item w3-button w3-hover-theme option sidebar-option" hx-get="/tinkerer"  hx-target="#UI" onclick="chooseOption(event, 'Tinkerer')">Tinkerer</a> <!-- Repeater -->
+        </div>
+        <div id="main">
+            <div class="w3-theme-d2">
+              <button id="openNav" class="w3-button w3-hover-theme w3-xlarge" onclick="w3_open()">&#9776;</button>
+            </div>
+            <div id="UI" class="w3-container w3-text-theme" hx-get="/dashboard" hx-trigger="load" onclick="w3_close()"></div>
+        </div>
+    </body>
+</html>
+{{ end }}
+

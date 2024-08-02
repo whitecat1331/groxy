@@ -1,0 +1,36 @@
+.htmx-indicator {
+    opacity:0;
+    /* transition: opacity 500ms ease-in; */
+}
+.htmx-request .htmx-indicator{
+    opacity:1
+}
+.htmx-request.htmx-indicator{
+    opacity:1
+}
+
+body {
+  background-color: black;
+  color: grey;
+}
+
+.option {
+    color: black;
+}
+
+.sidebar-option.active {
+    background: darkorchid;
+}
+
+#taskbar {
+    position: absolute;
+    height: auto;
+}
+
+#UI {
+    height: 100vh;
+}
+
+#openNav {
+    color: black;
+}
